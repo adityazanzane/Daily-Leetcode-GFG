@@ -48,13 +48,10 @@ public static Stack<Integer>_push(ArrayList<Integer> arr,int n)
 {
     //Your code here
     Stack<Integer> stk=new Stack<>();
-    if(n==0) return stk;
-    
     for(int i=0;i<n;i++){
         stk.push(arr.get(i));
     }
     return stk;
-    
 }
 
 public static void _pop(Stack<Integer>s)
