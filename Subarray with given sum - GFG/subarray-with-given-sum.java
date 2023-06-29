@@ -38,38 +38,29 @@ class Main{
 
 
 
+
 class Solution
 {
     //Function to find a continuous sub-array which adds up to a given number.
-    static ArrayList<Integer> subarraySum(int[] arr, int n, int s) 
+     static ArrayList<Integer> subarraySum(int[] arr, int n, int s) 
     {
-        // Your code here
-        ArrayList<Integer> a=new ArrayList<>();
-        if(s==0){
-            a.add(-1); 
-            return a;
-
-        } 
-        
-        int i=0,j=0;
-        int sum=arr[0];
-        while(j<n){
-            if(sum==s){
-                a.add(i+1);
-                a.add(j+1);
-                return a;
-            }else if(sum<s){
+        if( s == 0) {
+            return new ArrayList<>(Arrays.asList(-1));
+        }
+        int j = 1,
+            currSum = arr[0];
+        for(int i = 0; i < n; i++) {
+            while(currSum < s && j < n) {
+                currSum += arr[j];
                 j++;
-                if(j<n){
-                    sum+=arr[j];
-                }
-                }else{
-                    sum-=arr[i];
-                    i++;
-                }
             }
-            a.add(-1);
-            return a;
-        
+            if(currSum == s) {
+                return new ArrayList<>(Arrays.asList(i+1,j));
+            } else {
+                currSum -= arr[i];
+            }
+        }
+        return new ArrayList<>(Arrays.asList(-1));
+    
     }
 }
