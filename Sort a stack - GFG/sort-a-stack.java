@@ -24,26 +24,23 @@ class SortedStack{
 
 
 /*Complete the function below*/
+
+
+/*Complete the function below*/
 class GfG{
-	public Stack<Integer> sort(Stack<Integer> s)
+	public Stack<Integer> sort(Stack<Integer> input)
 	{
 		//add code here.
-		sortstack(s);
-		return s;
-	}
-	public void sortstack(Stack<Integer> s){
-	    if(s.size()==0)return;
-	    int x=s.pop();
-	    sortstack(s);
-	    insert(s, x);
-	}
-	public void insert(Stack<Integer> s, int x){
-	    if(s.size()==0 || x>=s.peek()){
-	        s.push(x);
-	        return;
-	    }
-	    int tmp=s.pop();
-	    insert(s, x);
-	    s.push(tmp);
+		Stack<Integer> tempStack=new Stack<Integer>();
+		while(!input.isEmpty()){
+		    int temp=input.pop();
+		    
+		    while(!tempStack.isEmpty() && tempStack.peek()>temp)
+		    {
+		        input.push(tempStack.pop());
+		    }
+		    tempStack.push(temp);
+		}
+		return tempStack;
 	}
 }
