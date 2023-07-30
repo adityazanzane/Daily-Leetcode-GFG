@@ -22,12 +22,21 @@ class  Solution
 {
     void shuffleArray(long arr[], int n)
     {
-        for (int i = 0, q = 1, k = n/2; i < n; i++, k++, q++)
-            for (int j = k; j > i + q; j--) {
-                long temp = arr[j - 1];
-                arr[j - 1] = arr[j];
-                arr[j] = temp;
-            }
+        // Your code goes here
+        helper(arr, arr.length/2-1, arr.length-1, arr.length);
+        
+    }
+    void helper(long arr[], int i, int j, int counter){
+        if(counter<=0) return;
+        
+        long a=arr[i];
+        long b=arr[j];
+        
+        helper(arr, i-1, j-1, counter-2);
+        
+        arr[counter-2]=a;
+        arr[counter-1]=b;
+        return;
     }
 }
 
