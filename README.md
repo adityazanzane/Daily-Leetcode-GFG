@@ -1,1 +1,1 @@
-Daily LeetCode and GFG!!!
+GFG Practice Codes
